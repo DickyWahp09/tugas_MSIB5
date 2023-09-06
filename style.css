@@ -1,0 +1,31 @@
+body {
+  background-image: url("image/BG.jpg"); /* Ganti 'background.jpg' dengan URL atau path gambar latar belakang Anda */
+  background-size: cover;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: #fff;
+}
+
+#biodata-container {
+  background: rgb(151, 151, 151);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 400px;
+}
+
+.data-row {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.data-row img {
+  width: 25px; /* Sesuaikan ukuran ikon sesuai preferensi Anda */
+  margin-right: 10px;
+}
+
+.data-row p {
+  margin: 0;
+  text-align: left;
+}

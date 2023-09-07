@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Pegawai</title>
+    <style>
+      body {
+        background-image: url("image/BG.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+      }
+      #data-pegawai {
+        background-color: rgba(219, 219, 219, 0.832);
+        padding: 20px;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="data-pegawai">
+      <h1>Data Pegawai</h1>
+      <p>Nama Pegawai: <span id="nama"></span></p>
+      <p>Jabatan: <span id="jabatan"></span></p>
+      <p>Status: <span id="status"></span></p>
+      <p>Gaji Pokok: <span id="gaji-pokok"></span></p>
+      <p>Tunjangan Jabatan: <span id="tunjangan-jabatan"></span></p>
+      <p>BPJS: <span id="bpjs"></span></p>
+      <p>Tunjangan Keluarga: <span id="tunjangan-keluarga"></span></p>
+      <p>Total Gaji: <span id="total-gaji"></span></p>
+    </div>
+
+    <script>
+      // Data Pegawai
+      var pegawai = {
+        nama: "Ridwan",
+        jabatan: "Manager",
+        status: "Menikah",
+      };
+
+      // Menghitung Gaji Pokok menggunakan if
+      var gajiPokok;
+      if (pegawai.jabatan === "Manager") {
+        gajiPokok = 15000000; // 15 juta
+      } else if (pegawai.jabatan === "Asisten Manager") {
+        gajiPokok = 10000000; // 10 juta
+      } else if (pegawai.jabatan === "Staff") {
+        gajiPokok = 5000000; // 5 juta
+      } else {
+        gajiPokok = 0;
+      }
+
+      // Menghitung Tunjangan Jabatan (15% dari gaji pokok)
+      var tunjanganJabatan = 0.15 * gajiPokok;
+
+      // Menghitung BPJS (10% dari gaji pokok)
+      var bpjs = 0.1 * gajiPokok;
+
+      // Menghitung Tunjangan Keluarga (20% dari gaji pokok jika menikah, 0% jika tidak)
+      var tunjanganKeluarga =
+        pegawai.status === "Menikah" ? 0.2 * gajiPokok : 0;
+
+      // Menghitung Total Gaji
+      var totalGaji = gajiPokok + tunjanganJabatan + bpjs + tunjanganKeluarga;
+
+      // Menampilkan data pegawai dan gaji
+      document.getElementById("nama").textContent = pegawai.nama;
+      document.getElementById("jabatan").textContent = pegawai.jabatan;
+      document.getElementById("status").textContent = pegawai.status;
+      document.getElementById("gaji-pokok").textContent =
+        gajiPokok.toLocaleString("id-ID");
+      document.getElementById("tunjangan-jabatan").textContent =
+        tunjanganJabatan.toLocaleString("id-ID");
+      document.getElementById("bpjs").textContent =
+        bpjs.toLocaleString("id-ID");
+      document.getElementById("tunjangan-keluarga").textContent =
+        tunjanganKeluarga.toLocaleString("id-ID");
+      document.getElementById("total-gaji").textContent =
+        totalGaji.toLocaleString("id-ID");
+    </script>
+  </body>
+</html>

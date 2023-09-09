@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Pegawai</title>
+    <style>
+      /* CSS untuk latar belakang gambar */
+      body {
+        background-image: url("image/BG.jpg"); /* Ganti 'background-image.jpg' dengan URL gambar latar belakang Anda */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      /* CSS untuk tabel */
+      table {
+        border-collapse: collapse;
+        width: 80%;
+        margin: 20px auto;
+        background-color: #fff; /* Warna latar belakang putih untuk tabel */
+        opacity: 0.9;
+      }
+
+      th,
+      td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      /* Warna latar belakang untuk header kolom */
+      th {
+        background-color: #ff0000; /* Warna merah untuk header kolom */
+        color: white;
+      }
+
+      /* Warna latar belakang untuk baris ganjil */
+      tr:nth-child(odd) {
+        background-color: yellow; /* Warna kuning untuk baris ganjil */
+      }
+
+      /* Warna latar belakang untuk baris genap */
+      tr:nth-child(even) {
+        background-color: blue; /* Warna biru untuk baris genap */
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center">Data Pegawai</h1>
+    <table>
+      <tr>
+        <th>Nama Pegawai</th>
+        <th>Jabatan</th>
+        <th>Gapok</th>
+        <th>Tunjangan Jabatan</th>
+        <th>Tunjangan Kesehatan</th>
+        <th>Gaji Kotor</th>
+        <th>Zakat Profesi</th>
+        <th>Take Home Pay</th>
+      </tr>
+      <script>
+        // Data Pegawai
+        var pegawai = [
+          { nama: "Pegawai1", gapok: 15000000 },
+          { nama: "Pegawai2", gapok: 15000000 },
+          { nama: "Pegawai3", gapok: 10000000 },
+          { nama: "Pegawai4", gapok: 10000000 },
+          { nama: "Pegawai5", gapok: 10000000 },
+          { nama: "Pegawai6", gapok: 7000000 },
+          { nama: "Pegawai7", gapok: 7000000 },
+          { nama: "Pegawai8", gapok: 7000000 },
+          { nama: "Pegawai9", gapok: 4000000 },
+          { nama: "Pegawai10", gapok: 4000000 },
+        ];
+
+        // Fungsi untuk menghitung gaji dan tunjangan
+        function hitungGaji(pegawai) {
+          var jabatan = "";
+          if (pegawai.nama === "Pegawai1" || pegawai.nama === "Pegawai2") {
+            jabatan = "Manager";
+          } else if (
+            pegawai.nama === "Pegawai3" ||
+            pegawai.nama === "Pegawai4" ||
+            pegawai.nama === "Pegawai5"
+          ) {
+            jabatan = "Asisten Manager";
+          } else if (
+            pegawai.nama === "Pegawai6" ||
+            pegawai.nama === "Pegawai7" ||
+            pegawai.nama === "Pegawai8"
+          ) {
+            jabatan = "Supervisor";
+          } else if (
+            pegawai.nama === "Pegawai9" ||
+            pegawai.nama === "Pegawai10"
+          ) {
+            jabatan = "Staff";
+          }
+
+          var tunjanganJabatan = 0.2 * pegawai.gapok;
+          var tunjanganKesehatan = 0.1 * pegawai.gapok;
+          var gajiKotor = pegawai.gapok + tunjanganJabatan + tunjanganKesehatan;
+
+          var agama =
+            pegawai.nama.charAt(pegawai.nama.length - 1) % 2 === 0
+              ? "Non Muslim"
+              : "Muslim";
+          var zakatProfesi =
+            agama === "Muslim" && gajiKotor >= 7000000 ? 0.025 * gajiKotor : 0;
+          var takeHomePay = gajiKotor - zakatProfesi;
+
+          return [
+            jabatan,
+            tunjanganJabatan,
+            tunjanganKesehatan,
+            gajiKotor,
+            zakatProfesi,
+            takeHomePay,
+          ];
+        }
+
+        // Mendapatkan tabel dengan tagname "table"
+        var tables = document.getElementsByTagName("table");
+
+        // Mengambil tabel pertama (indeks 0)
+        var mainTable = tables[0];
+
+        // Membuat baris tabel untuk setiap pegawai
+        for (var i = 0; i < pegawai.length; i++) {
+          var hasilPerhitungan = hitungGaji(pegawai[i]);
+
+          // Mengecek agama untuk warna baris
+          var agama =
+            pegawai[i].nama.charAt(pegawai[i].nama.length - 1) % 2 === 0
+              ? "Non Muslim"
+              : "Muslim";
+          var rowColor = agama === "Muslim" ? "yellow" : "blue";
+
+          // Membuat elemen baris (<tr>) baru
+          var newRow = mainTable.insertRow(-1); // -1 untuk memasukkan ke akhir tabel
+
+          // Menambahkan sel-sel data ke dalam baris
+          var cellNama = newRow.insertCell(0);
+          var cellJabatan = newRow.insertCell(1);
+          var cellGapok = newRow.insertCell(2);
+          var cellTunjanganJabatan = newRow.insertCell(3);
+          var cellTunjanganKesehatan = newRow.insertCell(4);
+          var cellGajiKotor = newRow.insertCell(5);
+          var cellZakatProfesi = newRow.insertCell(6);
+          var cellTakeHomePay = newRow.insertCell(7);
+
+          // Mengisi sel-sel dengan data yang sesuai
+          cellNama.innerHTML = pegawai[i].nama;
+          cellJabatan.innerHTML = hasilPerhitungan[0];
+          cellGapok.innerHTML = pegawai[i].gapok;
+          cellTunjanganJabatan.innerHTML = hasilPerhitungan[1];
+          cellTunjanganKesehatan.innerHTML = hasilPerhitungan[2];
+          cellGajiKotor.innerHTML = hasilPerhitungan[3];
+          cellZakatProfesi.innerHTML = hasilPerhitungan[4];
+          cellTakeHomePay.innerHTML = hasilPerhitungan[5];
+
+          // Menambahkan warna latar belakang sesuai agama
+          newRow.style.backgroundColor = rowColor;
+        }
+      </script>
+    </table>
+  </body>
+</html>

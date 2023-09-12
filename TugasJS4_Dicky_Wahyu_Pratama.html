@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Form Toko Online</title>
+    <style>
+      body {
+        background-image: url("image/BG.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        font-family: Arial, sans-serif;
+      }
+      table {
+        width: 50%;
+        margin: 0 auto;
+        border-collapse: collapse;
+        border: 1px solid #ccc;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      h1 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Form Toko Online</h1>
+    <form id="tokoOnlineForm">
+      <table>
+        <tr>
+          <td><label for="nama">Nama Pelanggan:</label></td>
+          <td><input type="text" id="nama" name="nama" required /></td>
+        </tr>
+        <tr>
+          <td><label for="produk">Pilih Produk:</label></td>
+          <td>
+            <select id="produk" name="produk">
+              <!-- Menggunakan perulangan for untuk menghasilkan opsi produk -->
+              <script>
+                var produkList = ["TV", "AC", "Kulkas"];
+                for (var i = 0; i < produkList.length; i++) {
+                  document.write(
+                    "<option value='" +
+                      produkList[i] +
+                      "'>" +
+                      produkList[i] +
+                      "</option>"
+                  );
+                }
+              </script>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="jumlah">Banyak Item Produk yang Dibeli:</label></td>
+          <td><input type="number" id="jumlah" name="jumlah" required /></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button type="button" id="proses" onclick="transaksi()">
+              Beli
+            </button>
+          </td>
+        </tr>
+      </table>
+    </form>
+
+    <script>
+      function transaksi() {
+        var nama = document.getElementById("nama").value;
+        var produk = document.getElementById("produk").value;
+        var jumlah = parseInt(document.getElementById("jumlah").value);
+
+        var hargaSatuan = 0;
+
+        // Struktur kendali switch case untuk menentukan harga produk
+        switch (produk) {
+          case "TV":
+            hargaSatuan = 2000000;
+            break;
+          case "AC":
+            hargaSatuan = 3000000;
+            break;
+          case "Kulkas":
+            hargaSatuan = 4000000;
+            break;
+        }
+
+        var hargaKotor = hargaSatuan * jumlah;
+        var diskon = 0;
+
+        // Diskon dengan multiple IF
+        if (produk === "Kulkas" && jumlah >= 3) {
+          diskon = 0.3 * hargaKotor;
+        } else if (produk === "AC" && jumlah >= 3) {
+          diskon = 0.2 * hargaKotor;
+        } else {
+          diskon = 0.1 * hargaKotor;
+        }
+
+        var ppn = 0.1 * (hargaKotor - diskon);
+        var hargaBayar = hargaKotor - diskon + ppn;
+
+        // Menampilkan data dalam bentuk alert
+        alert(
+          "Nama Pelanggan: " +
+            nama +
+            "\n" +
+            "Produk yang Dibeli: " +
+            produk +
+            "\n" +
+            "Harga Satuan: Rp " +
+            hargaSatuan.toLocaleString() +
+            "\n" +
+            "Jumlah Item Produk yang Dibeli: " +
+            jumlah +
+            "\n" +
+            "Harga Kotor: Rp " +
+            hargaKotor.toLocaleString() +
+            "\n" +
+            "Diskon: Rp " +
+            diskon.toLocaleString() +
+            "\n" +
+            "PPN: Rp " +
+            ppn.toLocaleString() +
+            "\n" +
+            "Harga Bayar: Rp " +
+            hargaBayar.toLocaleString()
+        );
+      }
+    </script>
+  </body>
+</html>

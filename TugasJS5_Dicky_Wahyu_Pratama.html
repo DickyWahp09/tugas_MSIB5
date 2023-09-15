@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Informasi Gempa</title>
+    <style>
+      body {
+        background-image: url("image/BG.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #000000;
+      }
+
+      h1 {
+        text-align: center;
+        padding: 20px;
+      }
+
+      table {
+        margin: 0 auto;
+        background: rgba(126, 119, 119, 0.5);
+        border-radius: 10px;
+        width: 70%; /* Ubah lebar sesuai dengan kebutuhan Anda */
+        color: #ffffff;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        text-align: center; /* Tengahkan teks dalam sel tabel */
+      }
+
+      th {
+        background-color: #484848;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Informasi Gempa Hari Ini</h1>
+    <table>
+      <tr>
+        <th>Lokasi Gempa</th>
+        <th>Skala</th>
+        <th>Dampak</th>
+      </tr>
+    </table>
+
+    <script>
+      class Gempa {
+        constructor(lokasi, skala) {
+          this.lokasi = lokasi;
+          this.skala = skala;
+        }
+
+        dampak() {
+          let dampakStr;
+          if (this.skala >= 0 && this.skala <= 2) {
+            dampakStr = "Tidak terasa";
+          } else if (this.skala > 2 && this.skala <= 4) {
+            dampakStr = "Bangunan retak-retak";
+          } else if (this.skala > 4 && this.skala <= 6) {
+            dampakStr = "Bangunan roboh";
+          } else {
+            dampakStr = "Bangunan roboh dan berpotensi tsunami";
+          }
+
+          const table = document.querySelector("table");
+          const newRow = table.insertRow(table.rows.length);
+          const cell1 = newRow.insertCell(0);
+          const cell2 = newRow.insertCell(1);
+          const cell3 = newRow.insertCell(2);
+          cell1.innerHTML = this.lokasi;
+          cell2.innerHTML = this.skala;
+          cell3.innerHTML = dampakStr;
+        }
+      }
+
+      // Membuat objek-objek Gempa
+      const gempa1 = new Gempa("California, Amerika Serikat", 3.5);
+      const gempa2 = new Gempa("Tokyo, Jepang", 5.0);
+      const gempa3 = new Gempa("Lima, Peru", 1.8);
+      const gempa4 = new Gempa("Sumatra, Indonesia", 6.7);
+      const gempa5 = new Gempa("Chile", 8.2);
+
+      // Menggunakan fungsi dampak() untuk mencetak informasi gempa
+      gempa1.dampak();
+      gempa2.dampak();
+      gempa3.dampak();
+      gempa4.dampak();
+      gempa5.dampak();
+    </script>
+  </body>
+</html>

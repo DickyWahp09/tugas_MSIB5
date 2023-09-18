@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Profil dan Keahlian</title>
+    <!-- Sertakan jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        background-image: url("images/BG.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: "Arial", sans-serif;
+        color: rgb(0, 0, 0);
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 36px;
+        margin-top: 100px;
+      }
+
+      ul {
+        list-style-type: none;
+        text-align: center;
+        padding: 0;
+        margin: 30px 0;
+      }
+
+      li {
+        margin: 15px;
+        display: inline;
+      }
+
+      .show-info {
+        text-decoration: none;
+        color: white;
+        background-color: #969696;
+        padding: 10px 20px;
+        border-radius: 25px;
+        transition: background-color 0.3s;
+        font-weight: bold;
+        font-size: 18px;
+      }
+
+      .show-info:hover {
+        background-color: #000000;
+      }
+
+      .info {
+        display: none;
+        margin: 30px auto;
+        max-width: 800px;
+        background-color: rgb(222, 222, 222);
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+      }
+      h2 {
+        font-size: 24px;
+        margin-top: 0;
+      }
+      p {
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Selamat Datang di Website Biodata</h1>
+    <ul>
+      <li><a href="#" class="show-info" data-target="profile">Profil</a></li>
+      <li>
+        <a href="#" class="show-info" data-target="moto_hidup">Moto Hidup</a>
+      </li>
+      <li><a href="#" class="show-info" data-target="keahlian">Keahlian</a></li>
+    </ul>
+
+    <div id="profile-info" class="info">
+      <h2>Profil Pribadi</h2>
+      <p>
+        Kenalin nama saya Dicky Wahyu Pratama, biasa dipanggil Dicky. Asal saya
+        dari Kabupaten Bojonegoro. Status saya sekarang adalah Mahasiswa disalah
+        satu Universitas Negeri yang ada di Madura yaitu Universitas Trunojoyo
+        Madura. Di Universitas tersebut saya masuk pada jurusan Pendidikan
+        Informatika Fakultas Ilmu Pendidikan. Saya masuk pada angkatan 2021 dan
+        sekarang saya menempuh semester 5 dan melakukan program MBKM dengan
+        memilih program Studi Independen di Mitra kerja PT. Hendevane Indonesia,
+        mengambil kelas Full stack Developer Web.
+      </p>
+    </div>
+
+    <div id="moto_hidup-info" class="info">
+      <h2>Moto Hidup dan Alasan</h2>
+      <p>
+        "Hidup hanya datang sekali, jadi lakukan apa pun yang membuatmu bahagia,
+        dan bersama siapa pun yang membuatmu tersenyum."
+      </p>
+      <p>
+        Salah satu alasan kuat dari motto hidup Saya "Hidup hanya datang sekali,
+        jadi lakukan apa pun yang membuatmu bahagia, dan bersama siapa pun yang
+        membuatmu tersenyum" adalah: Menghindari Penyesalan: Motto ini mendorong
+        seseorang untuk hidup tanpa penyesalan di kemudian hari. Dengan
+        mengikuti apa yang membuatnya bahagia dan bersama orang-orang yang
+        positif dalam hidupnya, seseorang memiliki peluang lebih kecil untuk
+        merasa menyesal karena tidak melakukan hal-hal yang benar-benar penting
+        atau tidak menghabiskan waktu dengan orang yang dicintai. Hal ini dapat
+        membantu seseorang merasa lebih puas dengan kehidupan mereka ketika
+        mereka mencapai akhir perjalanan mereka.
+      </p>
+    </div>
+
+    <div id="keahlian-info" class="info">
+      <h2>Keahlian dan Pengalaman</h2>
+      <p>
+        Keahlian : Jujur saya belum memiliki keahlian yang spesifik yang dapat
+        menjadikan saya menghasilkan sesuatu, dan karena itu saya masih mencari
+        keahlian saya tersebut sampai sekarang.
+      </p>
+      <p>
+        Pengalaman : Pengalaman saya dalam bidang Organisasi lumayan cukup untuk
+        membantu saya untuk menjadi seseorang, karena saya sering untuk
+        mengikuti Organisasi atau kegiatan kepanitiaan yang ada.
+      </p>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $(".show-info").click(function (event) {
+          event.preventDefault();
+          var target = $(this).data("target");
+          $(".info").hide();
+          $("#" + target + "-info").fadeIn();
+        });
+      });
+    </script>
+  </body>
+</html>

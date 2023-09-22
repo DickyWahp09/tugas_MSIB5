@@ -87,13 +87,13 @@
                 $email = "dickywahyu358@gmail.com";
             ?>
             <ul>
-                <li><strong>Nama:</strong> <?php echo $nama; ?></li>
-                <li><strong>Nomor HP:</strong> <?php echo $nomor_hp; ?></li>
-                <li><strong>Alamat:</strong> <?php echo $alamat; ?></li>
-                <li><strong>Jenis Kelamin:</strong> <?php echo $jenis_kelamin; ?></li>
-                <li><strong>Umur:</strong> <?php echo $umur; ?></li>
-                <li><strong>Keahlian:</strong> <?php echo $keahlian; ?></li>
-                <li><strong>Email:</strong> <?php echo $email; ?></li>
+                <li><strong>Nama:</strong> <?=$nama; ?></li>
+                <li><strong>Nomor HP:</strong> <?=$nomor_hp; ?></li>
+                <li><strong>Alamat:</strong> <?=$alamat; ?></li>
+                <li><strong>Jenis Kelamin:</strong> <?=$jenis_kelamin; ?></li>
+                <li><strong>Umur:</strong> <?=$umur; ?></li>
+                <li><strong>Keahlian:</strong> <?=$keahlian; ?></li>
+                <li><strong>Email:</strong> <?=$email; ?></li>
             </ul>
             <h3>Tentang Saya</h3>
             <p>

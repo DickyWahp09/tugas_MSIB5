@@ -1,0 +1,42 @@
+Script Tugas1 SQl atas nama Dicky Wahyu Pratama :
+
+//Masuk ke mariaDB ke dalam CMD
+cd xampp\mysql\bin
+mysql -u root -p
+
+//Membuat database baru
+CREATE DATABASE dbpegawai;
+
+//Menampilkan database
+SHOW DATABASES;
+
+//Masuk database dbpegawai
+use dbpegawai;
+
+//Membuat table pegawai
+CREATE TABLE pegawai (
+    id INT PRIMARY KEY,
+    nip CHAR(5) NOT NULL UNIQUE,
+    nama VARCHAR(30) NOT NULL,
+    gender ENUM('L','P') NOT NULL,
+    umur INT NOT NULL,
+    berat_badan FLOAT
+);
+
+//Menampilkan table pegawai
+SHOW TABLES;
+
+//Menampilkan deskripsi tabel pegawai yang sudah dibuat
+DESC pegawai;
+
+//Menambahkan isi dalam table pegawai
+INSERT INTO pegawai (id, nip, nama, gender, umur, berat_badan)
+VALUES
+    (1, '12323', 'Dicky Wahyu', 'L', 18, 60),
+    (2, '12324', 'Iksan Dwi', 'L', 21, 65),
+    (3, '12325', 'Rizal Efendi', 'L', 20, 80),
+    (4, '12326', 'Indro Dwi', 'L', 22, 76),
+    (5, '12327', 'Nina Nariyono', 'P', 20, 55.0);
+
+//Menampilkan isi dalam table
+select * FROM pegawai;
